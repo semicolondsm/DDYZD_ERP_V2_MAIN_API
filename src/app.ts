@@ -1,4 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
+import path from "path";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import cors from "cors";
@@ -8,7 +9,7 @@ import { db } from "./models";
 
 const app: express.Application = express();
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, "../.env") });
 
 db.sequelize.sync({ force: false })
 .then(() => { console.log("DATABASE Connection Success") })
