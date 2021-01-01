@@ -4,7 +4,9 @@
   "description": "대동여지도 ERP(Enterprize Resource Planning) 클라이언트 API",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec ts-node src/app.ts"
+    "start": "nodemon --exec ts-node src/app.ts",
+    "start:prod": "cross-env NODE_ENV=production npx pm2 start dist/app.js --name ddyzd_erp_main",
+    "stop": "npx pm2 stop ddyzd_erp_main & npx pm2 delete ddyzd_erp_main"
   },
   "repository": {
     "type": "git",
@@ -33,7 +35,9 @@
     "@types/express": "^4.17.9",
     "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.17",
+    "cross-env": "^7.0.3",
     "nodemon": "^2.0.6",
-    "pm2": "^4.5.1"
+    "pm2": "^4.5.1",
+    "ts-node": "^9.1.1"
   }
 }
