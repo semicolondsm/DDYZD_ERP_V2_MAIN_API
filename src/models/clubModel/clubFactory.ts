@@ -24,6 +24,7 @@ const ClubFactory = (sequelize: Sequelize.Sequelize): Sequelize.ModelCtor<ClubIn
   };
   const Club = sequelize.define<ClubInterface, ClubAttributes>("club", attributes, {
     timestamps: false,
+    freezeTableName: true
   });
   return Club;
 }
