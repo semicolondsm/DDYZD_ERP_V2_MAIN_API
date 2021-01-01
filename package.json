@@ -4,7 +4,7 @@
   "description": "대동여지도 ERP(Enterprize Resource Planning) 클라이언트 API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --exec ts-node src/app.ts"
   },
   "repository": {
     "type": "git",
