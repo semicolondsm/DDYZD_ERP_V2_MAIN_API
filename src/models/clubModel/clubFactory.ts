@@ -12,7 +12,7 @@ const ClubFactory = (sequelize: Sequelize.Sequelize): Sequelize.ModelCtor<ClubIn
       autoIncrement: true,
     }, 
     name: {
-      type: STRING,
+      type: STRING(30),
       allowNull: false,
     }, 
     total_budget: {
