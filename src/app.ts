@@ -4,10 +4,15 @@ import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
 import router from "./routes";
+import { db } from "./models";
 
 const app: express.Application = express();
 
 dotenv.config();
+
+db.sequelize.sync({ force: false })
+.then(() => { console.log("DATABASE Connection Success") })
+.catch(console.error);
 
 app.use(morgan("dev"));
 app.use(bodyParser.json());
