@@ -11,7 +11,7 @@ const TagFactory = (sequelize: Sequelize.Sequelize): Sequelize.ModelCtor<TagInte
       primaryKey: true,
       autoIncrement: true,
     }, 
-    title: {
+    tag: {
       type: STRING(15),
       allowNull: false,
     }

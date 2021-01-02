@@ -1,6 +1,6 @@
 interface TagAttributes {
   id: number;
-  title: string;
+  tag: string;
 }
 
 export { TagAttributes }
