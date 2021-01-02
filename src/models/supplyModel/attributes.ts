@@ -6,6 +6,7 @@ interface SupplyAttributes {
   message: string;
   count: number;
   link: string;
+  invoice: string;
 }
 
 export { SupplyAttributes }

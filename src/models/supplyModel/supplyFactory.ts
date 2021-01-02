@@ -33,6 +33,9 @@ const SupplyFactory = (sequelize: Sequelize.Sequelize): Sequelize.ModelCtor<Supp
       type: STRING(300),
       allowNull: false,
     },
+    invoice: {
+      type: STRING(100),
+    }
   };
   const Supply = sequelize.define<SupplyInterface, SupplyAttributes>("supply", attributes, {
     timestamps: false,
