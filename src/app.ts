@@ -41,5 +41,5 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.listen(app.get("port"), () => {
-  console.log("server on 3000");
+  console.log("server on", app.get("port"));
 });
