@@ -22,6 +22,10 @@ const createModels = (): DbInterface => {
   db.Club.belongsToMany(db.Tag, { foreignKey: "club_id", through: "club_tag" });
   db.Tag.belongsToMany(db.Club, { foreignKey: "tag_id", through: "club_tag" });
 
+  // club - supply relation 1:n
+  db.Club.hasMany(db.Supply, { sourceKey: "id", foreignKey: "club_id" });
+  db.Supply.belongsTo(db.Club, { targetKey: "id", foreignKey: "club_id" });
+
   // user - club relation 1:n
   db.Club.hasMany(db.User, { sourceKey: "id", foreignKey: "club_id" });
   db.User.belongsTo(db.Club, { targetKey: "id", foreignKey: "club_id" });
