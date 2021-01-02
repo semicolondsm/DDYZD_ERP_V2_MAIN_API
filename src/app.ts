@@ -15,6 +15,8 @@ db.sequelize.sync({ force: false })
 .then(() => { console.log("DATABASE Connection Success") })
 .catch(console.error);
 
+app.set("port", process.env.PORT || "3000");
+
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,4 +38,8 @@ app.use("/", router);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.status(404).send("Sorry, cant find that");
+});
+
+app.listen(app.get("port"), () => {
+  console.log("server on 3000");
 });
