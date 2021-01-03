@@ -1,7 +1,8 @@
 import { db } from "../models";
 import { OptionInterface, SupplyInterface } from "../models/objectRelationalMapping/model.interfaces";
 
-const insertSupplyDataQuery = (name: string,
+const insertSupplyDataQuery = (
+  name: string,
   price: number,
   status: number,
   count: number,
