@@ -1,5 +1,5 @@
 interface TagAttributes {
-  id: number;
+  id?: number;
   tag: string;
 }
 
