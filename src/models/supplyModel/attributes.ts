@@ -1,12 +1,14 @@
 interface SupplyAttributes {
-  id: number;
+  id?: number;
   name: string;
   price: number;
   status: number;
-  message: string;
+  message?: string;
   count: number;
   link: string;
-  invoice: string;
+  invoice?: string;
+  user_id?: number;
+  club_id?: number;
 }
 
 export { SupplyAttributes }
