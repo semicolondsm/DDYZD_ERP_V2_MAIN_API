@@ -8,3 +8,5 @@ class HttpError extends Error {
     this.message = message;
   }
 }
+
+export { HttpError }
