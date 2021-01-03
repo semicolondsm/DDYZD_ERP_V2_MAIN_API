@@ -1,5 +1,5 @@
 interface OptionAttributes {
-  id: number;
+  id?: number;
   script: string;
   supply_id?: number;
 }
