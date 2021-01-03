@@ -1,5 +1,5 @@
 interface UserAttributes {
-  id: number
+  id?: number
   name: string;
   gcn: string;
   email: string;
