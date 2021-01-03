@@ -1,5 +1,5 @@
 import { db } from "../models";
-import { SupplyInterface } from "../models/objectRelationalMapping/model.interfaces";
+import { OptionInterface, SupplyInterface } from "../models/objectRelationalMapping/model.interfaces";
 
 const insertSupplyDataQuery = (name: string,
   price: number,
@@ -12,6 +12,14 @@ const insertSupplyDataQuery = (name: string,
   return db.Supply.create({ name, price, status, count, link, user_id, club_id, });
 }
 
+const insertOptionDataQuery = (option: string, supply_id: number): Promise<OptionInterface> => {
+  return db.Option.create({
+    script: option,
+    supply_id: supply_id
+  });
+}
+
 export {
   insertSupplyDataQuery,
+  insertOptionDataQuery,
 }
