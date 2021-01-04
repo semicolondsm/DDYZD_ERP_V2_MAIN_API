@@ -20,6 +20,12 @@ const insertOptionDataQuery = (option: string, supply_id: number): Promise<Optio
   });
 }
 
+const findSupplyByIdQuery = (supply_id: number): Promise<SupplyInterface> => {
+  return db.Supply.findOne({
+    where: { id: supply_id },
+  });
+}
+
 export {
   insertSupplyDataQuery,
   insertOptionDataQuery,
