@@ -1,18 +1,12 @@
 import Sequelize from "sequelize";
-import { 
-  ClubInterface, 
-  ClubTagInterface, 
-  OptionInterface, 
-  SupplyInterface, 
-  TagInterface, 
-  UserInterface } from "./model.interfaces";
+import * as SequelizeInterface from "./model.interfaces";
 
 export interface DbInterface {
   sequelize: Sequelize.Sequelize;
-  Club: Sequelize.ModelCtor<ClubInterface>;
-  Tag: Sequelize.ModelCtor<TagInterface>;
-  ClubTag: Sequelize.ModelCtor<ClubTagInterface>;
-  User: Sequelize.ModelCtor<UserInterface>;
-  Supply: Sequelize.ModelCtor<SupplyInterface>;
-  Option: Sequelize.ModelCtor<OptionInterface>;
+  Club: Sequelize.ModelCtor<SequelizeInterface.ClubInterface>;
+  Tag: Sequelize.ModelCtor<SequelizeInterface.TagInterface>;
+  ClubTag: Sequelize.ModelCtor<SequelizeInterface.ClubTagInterface>;
+  User: Sequelize.ModelCtor<SequelizeInterface.UserInterface>;
+  Supply: Sequelize.ModelCtor<SequelizeInterface.SupplyInterface>;
+  Option: Sequelize.ModelCtor<SequelizeInterface.OptionInterface>;
 }
