@@ -1,5 +1,5 @@
 import { db } from "../models";
-import { OptionInterface, SupplyInterface } from "../models/objectRelationalMapping/model.interfaces";
+import { ClubInterface, OptionInterface, SupplyInterface } from "../models/objectRelationalMapping/model.interfaces";
 
 const insertSupplyDataQuery = (
   name: string,
@@ -26,7 +26,15 @@ const findSupplyByIdQuery = (supply_id: number): Promise<SupplyInterface> => {
   });
 }
 
+const findClubByIdQuery = (club_id: number): Promise<ClubInterface> => {
+  return db.Club.findOne({
+    where: { id: club_id },
+  });
+}
+ 
 export {
   insertSupplyDataQuery,
   insertOptionDataQuery,
+  findSupplyByIdQuery,
+  findClubByIdQuery,
 }
