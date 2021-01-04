@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 
 dotenv.config({ path: path.join(__dirname, "../.env") });
 
-const app = new ExpressApplication();
+const server = new ExpressApplication();
 
-app.init();
-app.setPort(process.env.PORT || "3000");
-app.listen();
+server.init();
+server.setPort(process.env.PORT || "3000");
+server.listen();

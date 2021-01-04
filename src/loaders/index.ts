@@ -19,6 +19,9 @@ class ExpressApplication {
       console.log("server on ", this.port);
     });
   }
+  public exportApplication() {
+    return this.app;
+  }
   constructor() {
     this.app = express();
   }
