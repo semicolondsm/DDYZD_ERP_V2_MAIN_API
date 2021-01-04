@@ -7,7 +7,7 @@
     "start": "nodemon --exec ts-node src/app.ts",
     "start:prod": "cross-env NODE_ENV=production npx pm2 start dist/app.js --name ddyzd_erp_main",
     "stop": "npx pm2 stop ddyzd_erp_main & npx pm2 delete ddyzd_erp_main",
-    "test": "tsc & npx mocha dist/test/**/*.spec.js",
+    "test": "tsc & cross-env NODE_ENV=test npx mocha dist/test/**/*.spec.js",
     "coverage": "nyc --reporter=text npm test"
   },
   "repository": {
