@@ -1,45 +1,11 @@
-import express, { NextFunction, Request, Response } from "express";
+import { ExpressApplication } from "./loaders";
 import path from "path";
-import bodyParser from "body-parser";
-import morgan from "morgan";
-import cors from "cors";
 import dotenv from "dotenv";
-import router from "./routes";
-import { db } from "./models";
-
-const app: express.Application = express();
 
 dotenv.config({ path: path.join(__dirname, "../.env") });
 
-db.sequelize.sync({ force: false })
-.then(() => { console.log("DATABASE Connection Success") })
-.catch(console.error);
+const app = new ExpressApplication();
 
-app.set("port", process.env.PORT || "3000");
-
-app.use(morgan("dev"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use((req: Request, res: Response, next: NextFunction) => {
-  const allowOrigins: string[] = [process.env.ALLOW_ORIGINS1, process.env.ALLOW_ORIGINS2];
-  const origin: string = req.headers.origin;
-  if(allowOrigins.includes(origin)) {
-    return cors({
-      origin,
-      credentials: true,
-    })(req, res, next);
-  } else {
-    next();
-  }
-});
-
-app.use("/", router);
-
-app.use((req: Request, res: Response, next: NextFunction) => {
-  res.status(404).send("Sorry, cant find that");
-});
-
-app.listen(app.get("port"), () => {
-  console.log("server on", app.get("port"));
-});
+app.init();
+app.setPort(process.env.PORT || "3000");
+app.listen();
