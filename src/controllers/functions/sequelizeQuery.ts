@@ -1,5 +1,6 @@
 import { db } from "../../models";
 import * as SequelizeInterface from "../../models/objectRelationalMapping/model.interfaces";
+import { UserInfo } from "../dto/userInfo";
 
 const InsertSupplyData = (
   name: string,
@@ -42,7 +43,7 @@ Promise<number> => {
   });
 }
 
-const FindOrCreateUser = (whereOption: object):
+const FindOrCreateUser = (whereOption: UserInfo):
 Promise<[SequelizeInterface.UserInterface, boolean]> => {
   return db.User.findOrCreate({
     where: whereOption,

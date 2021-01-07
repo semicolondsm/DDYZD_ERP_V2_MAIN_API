@@ -3,15 +3,10 @@ import { BusinessLogic } from "../@types/BusinessLogic";
 import { HttpError } from "../@types/httpError";
 import { db } from "../models";
 import { UserInterface } from "../models/objectRelationalMapping/model.interfaces";
+import { UserInfo } from "./dto/userInfo";
 import { issuanceAccessToken, issuanceRefreshToken } from "./functions/issuanceToken";
 
 const DSM_AUTH_URL = "http://54.180.98.91:8090";
-
-interface UserInfo {
-  name: string;
-  email: string;
-  gcn: string;
-}
 
 const provideToken: BusinessLogic = async (req, res, next) => {
   const token: string = req.headers["access-token"] as string;
