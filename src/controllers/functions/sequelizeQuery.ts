@@ -41,6 +41,13 @@ Promise<number> => {
     where: { id: supply_id }
   });
 }
+
+const FindOrCreateUser = (whereOption: object):
+Promise<[SequelizeInterface.UserInterface, boolean]> => {
+  return db.User.findOrCreate({
+    where: whereOption,
+  });
+}
  
 export {
   InsertSupplyData,
@@ -48,4 +55,5 @@ export {
   FindSupplyById,
   FindClubById,
   DeleteFromSupply,
+  FindOrCreateUser,
 }
