@@ -9,7 +9,7 @@ const verifyTokenLogic: BusinessLogic = (req, res, next) => {
     if(!token) {
       throw new Error();
     } 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET) as { type: string };
+    const decoded = jwt.verify(token.slice(7), process.env.JWT_SECRET) as { type: string };
     if(decoded.type !== "access") {
       throw new Error();
     }

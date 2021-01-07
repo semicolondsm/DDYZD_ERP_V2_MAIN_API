@@ -9,7 +9,7 @@ const verifyRefreshTokenLogic: BusinessLogic = (req, res, next) => {
     if(!refreshToken) {
       throw new Error();
     } 
-    const rt_decoded = jwt.verify(refreshToken, process.env.JWT_SECRET) as { type: string };
+    const rt_decoded = jwt.verify(refreshToken.slice(7), process.env.JWT_SECRET) as { type: string };
     if(rt_decoded.type !== "refresh") {
       throw new Error();
     }
