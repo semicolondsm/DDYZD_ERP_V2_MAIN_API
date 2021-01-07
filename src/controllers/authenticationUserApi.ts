@@ -29,4 +29,11 @@ const provideToken: BusinessLogic = async (req, res, next) => {
   });
 }
 
-export { provideToken }
+const refreshToken: BusinessLogic = async (req, res, next) => {
+  const accessToken: string = await issuanceAccessToken(req.rt_decoded.user_id);
+  res.status(200).json({
+    "access-token": accessToken,
+  });
+}
+
+export { provideToken, refreshToken }
