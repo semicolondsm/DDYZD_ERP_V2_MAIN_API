@@ -1,7 +1,7 @@
 import { BusinessLogic } from "../@types/BusinessLogic";
 import { HttpError } from "../@types/httpError";
 import { ClubInterface, SupplyInterface } from "../models/objectRelationalMapping/model.interfaces";
-import * as Query from "./sequelizeQuery";
+import * as Query from "./functions/sequelizeQuery";
 
 const supplyClubItems: BusinessLogic = async (req, res, next) => {
   const { price, name, count, option, url } = req.body as { price: number, name: string, count: number, option: string, url: string };

@@ -1,5 +1,5 @@
-import { db } from "../models";
-import * as SequelizeInterface from "../models/objectRelationalMapping/model.interfaces";
+import { db } from "../../models";
+import * as SequelizeInterface from "../../models/objectRelationalMapping/model.interfaces";
 
 const InsertSupplyData = (
   name: string,
