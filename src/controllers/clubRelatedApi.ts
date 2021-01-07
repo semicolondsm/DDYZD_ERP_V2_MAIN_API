@@ -52,8 +52,18 @@ const deleteClubItems: BusinessLogic = async (req, res, next) => {
   });
 }
 
+const showClubStatus: BusinessLogic = async (req, res, next) => {
+  const club_id = +(req.params.club_id);
+  const club: ClubInterface = await Query.FindClubById(club_id);
+  res.status(200).json({
+    total_budget: club.total_budget,
+    current_budget: club.current_budget, 
+  });
+}
+
 export { 
   supplyClubItems,
   putClubItems,
   deleteClubItems,
+  showClubStatus,
 }
