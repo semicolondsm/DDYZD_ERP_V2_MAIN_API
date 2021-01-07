@@ -24,7 +24,7 @@ const putClubItems: BusinessLogic = async (req, res, next) => {
   const supply_id: number = Number(req.params.supply_id);
   const { count, price } = req.body as { count: number, price: number };
   const supply: SupplyInterface = await Query.FindSupplyById(supply_id);
-  if(supply.club_id !== club_id || supply.user_id !== req.decoded.user_id) {
+  if(!supply || supply.club_id !== club_id || supply.user_id !== req.decoded.user_id) {
     throw new HttpError(403, "접근 권한이 없습니다.");
   }
   const majorClub = await Query.FindClubById(club_id);
@@ -43,7 +43,7 @@ const deleteClubItems: BusinessLogic = async (req, res, next) => {
   const club_id: number = Number(req.params.club_id);
   const supply_id: number = Number(req.params.supply_id); // parseInt or + statement change 
   const supply: SupplyInterface = await Query.FindSupplyById(supply_id);
-  if(supply.club_id !== club_id || supply.user_id !== req.decoded.user_id) { // null check 
+  if(!supply || supply.club_id !== club_id || supply.user_id !== req.decoded.user_id) { 
     throw new HttpError(403, "접근 권한이 없습니다.");
   }
   Query.DeleteFromSupply(supply_id);
