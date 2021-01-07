@@ -34,10 +34,18 @@ Promise<SequelizeInterface.ClubInterface> => {
     where: { id: club_id },
   });
 }
+
+const DeleteFromSupply = (supply_id: number):
+Promise<number> => {
+  return db.Supply.destroy({
+    where: { id: supply_id }
+  });
+}
  
 export {
   InsertSupplyData,
   InsertOptionData,
   FindSupplyById,
   FindClubById,
+  DeleteFromSupply,
 }
