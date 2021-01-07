@@ -5,7 +5,7 @@ import * as Query from "./sequelizeQuery";
 
 const supplyClubItems: BusinessLogic = async (req, res, next) => {
   const { price, name, count, option, url } = req.body as { price: number, name: string, count: number, option: string, url: string };
-  const club_id: number = Number(req.params.club_id);
+  const club_id: number = +(req.params.club_id);
   const majorClub: ClubInterface = await Query.FindClubById(club_id);
   if(majorClub.current_budget - price < 0) {
     throw new HttpError(400, "예산 초과");
@@ -20,8 +20,8 @@ const supplyClubItems: BusinessLogic = async (req, res, next) => {
 }
 
 const putClubItems: BusinessLogic = async (req, res, next) => {
-  const club_id: number = Number(req.params.club_id);
-  const supply_id: number = Number(req.params.supply_id);
+  const club_id: number = +(req.params.club_id);
+  const supply_id: number = +(req.params.supply_id);
   const { count, price } = req.body as { count: number, price: number };
   const supply: SupplyInterface = await Query.FindSupplyById(supply_id);
   if(!supply || supply.club_id !== club_id || supply.user_id !== req.decoded.user_id) {
@@ -40,8 +40,8 @@ const putClubItems: BusinessLogic = async (req, res, next) => {
 }
 
 const deleteClubItems: BusinessLogic = async (req, res, next) => {
-  const club_id: number = Number(req.params.club_id);
-  const supply_id: number = Number(req.params.supply_id); // parseInt or + statement change 
+  const club_id: number = +(req.params.club_id);
+  const supply_id: number = +(req.params.supply_id); 
   const supply: SupplyInterface = await Query.FindSupplyById(supply_id);
   if(!supply || supply.club_id !== club_id || supply.user_id !== req.decoded.user_id) { 
     throw new HttpError(403, "접근 권한이 없습니다.");
