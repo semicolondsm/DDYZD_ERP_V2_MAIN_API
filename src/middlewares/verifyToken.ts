@@ -9,7 +9,11 @@ const verifyTokenLogic: BusinessLogic = (req, res, next) => {
     if(!token) {
       throw new Error();
     } 
-    req.decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET) as { type: string };
+    if(decoded.type !== "access") {
+      throw new Error();
+    }
+    req.decoded = decoded;
     next();
   } catch(err) {
     if(err.message === "TokenExpiredError") {
