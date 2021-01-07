@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/semicolonDSM/DDYZD_ERP_V2_MAIN_API#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
